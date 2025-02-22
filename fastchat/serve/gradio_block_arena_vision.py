@@ -423,7 +423,8 @@ Note: You can only chat with <span style='color: #DE3163; font-weight: bold'>one
         )
 
     if add_promotion_links:
-        gr.Markdown(acknowledgment_md, elem_id="ack_markdown")
+        with gr.Accordion(ref_acknowledgment_md,open=False):
+            gr.Markdown(acknowledgment_md, elem_id="ack_markdown")
 
     # Register listeners
     btn_list = [upvote_btn, downvote_btn, flag_btn, regenerate_btn, clear_btn]

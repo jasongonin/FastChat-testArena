@@ -66,6 +66,7 @@ controller_url = None
 enable_moderation = False
 use_remote_storage = False
 
+ref_acknowledgment_md ="Acknowledgement and Legal Disclaimer"
 acknowledgment_md = """
 ### Terms of Service
 
@@ -881,7 +882,23 @@ We also thank [UC Berkeley SkyLab](https://sky.cs.berkeley.edu/), [Kaggle](https
     <img src="https://storage.googleapis.com/public-arena-asset/huggingface.png" alt="HuggingFace">
 </div>
 """
-    gr.Markdown(about_markdown, elem_id="about_markdown")
+    with gr.Accordion ("Acknowledgment & Legal disclaimer",open=False):
+        gr.Markdown(about_markdown, elem_id="about_markdown")
+
+    terms_of_service_markdown = """
+### Terms of Service
+
+Users are required to agree to the following terms before using the service:
+
+The service is a research preview. It only provides limited safety measures and may generate offensive content.
+It must not be used for any illegal, harmful, violent, racist, or sexual purposes.
+Please do not upload any private information.
+The service collects user dialogue data, including both text and images, and reserves the right to distribute it under a Creative Commons Attribution (CC-BY) or a similar license.
+
+#### Please report any bug or issue to our [Discord](https://discord.gg/6GXcFg3TH8)/arena-feedback.
+"""
+    with gr.Accordion("Terms of Service", open=False):
+        gr.Markdown(terms_of_service_markdown, elem_id="terms_of_service_markdown")
 
 
 def build_single_model_ui(models, add_promotion_links=False):
@@ -903,7 +920,9 @@ def build_single_model_ui(models, add_promotion_links=False):
 """
 
     state = gr.State()
-    gr.Markdown(notice_markdown, elem_id="notice_markdown")
+
+    #with gr.Accordion ("Notice Disclamer",open=False):
+    #    gr.Markdown(notice_markdown, elem_id="notice_markdown")
 
     with gr.Group(elem_id="share-region-named"):
         with gr.Row(elem_id="model_selector_row"):
@@ -976,7 +995,8 @@ def build_single_model_ui(models, add_promotion_links=False):
         )
 
     if add_promotion_links:
-        gr.Markdown(acknowledgment_md, elem_id="ack_markdown")
+         with gr.Accordion (ref_acknowledgment_md,open=False):
+            gr.Markdown(acknowledgment_md, elem_id="ack_markdown")
 
     # Register listeners
     btn_list = [upvote_btn, downvote_btn, flag_btn, regenerate_btn, clear_btn]

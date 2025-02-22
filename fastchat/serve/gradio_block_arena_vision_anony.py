@@ -399,7 +399,9 @@ def build_side_by_side_vision_ui_anony(context: Context, random_questions=None):
     model_selectors = [None] * num_sides
     chatbots = [None] * num_sides
     context_state = gr.State(context)
-    gr.Markdown(notice_markdown, elem_id="notice_markdown")
+
+    #with gr.Accordion ("Notice disclamer",open=False):
+    #    gr.Markdown(notice_markdown, elem_id="notice_markdown")
     text_and_vision_models = context.models
 
     with gr.Row():
@@ -518,7 +520,8 @@ def build_side_by_side_vision_ui_anony(context: Context, random_questions=None):
             label="Max output tokens",
         )
 
-    gr.Markdown(acknowledgment_md, elem_id="ack_markdown")
+    with gr.Accordion(ref_acknowledgment_md,open=False):
+        gr.Markdown(acknowledgment_md, elem_id="ack_markdown")
 
     # Register listeners
     btn_list = [

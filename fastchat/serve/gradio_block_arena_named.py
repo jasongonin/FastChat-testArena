@@ -329,7 +329,8 @@ def build_side_by_side_ui_named(models):
     model_selectors = [None] * num_sides
     chatbots = [None] * num_sides
 
-    notice = gr.Markdown(notice_markdown, elem_id="notice_markdown")
+    #with gr.Accordion ("Notice Disclamer",open=False):
+    #    notice = gr.Markdown(notice_markdown, elem_id="notice_markdown")
 
     with gr.Group(elem_id="share-region-named"):
         with gr.Row():
@@ -417,7 +418,10 @@ def build_side_by_side_ui_named(models):
             label="Max output tokens",
         )
 
-    gr.Markdown(acknowledgment_md, elem_id="ack_markdown")
+
+
+    with gr.Accordion ("Acknowledgment",open=False):
+        gr.Markdown(acknowledgment_md, elem_id="ack_markdown")
 
     # Register listeners
     btn_list = [

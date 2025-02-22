@@ -323,8 +323,12 @@ Note: You can only chat with <span style='color: #DE3163; font-weight: bold'>one
     states = [gr.State() for _ in range(num_sides)]
     model_selectors = [None] * num_sides
     chatbots = [None] * num_sides
-
-    notice = gr.Markdown(notice_markdown, elem_id="notice_markdown")
+    ref_notice_markdown ="""
+    * as reference and disclamer of the reuse in the context of this research work of lmarena and fastchat libraries
+    """
+    #with gr.Accordion ("Notice disclamer",open=False):
+    #    notice = gr.Markdown(ref_notice_markdown, elem_id="ref_notice_markdown")
+    #    notice = gr.Markdown(notice_markdown, elem_id="notice_markdown")
 
     text_and_vision_models = context.models
     context_state = gr.State(context)
@@ -448,7 +452,8 @@ Note: You can only chat with <span style='color: #DE3163; font-weight: bold'>one
             label="Max output tokens",
         )
 
-    gr.Markdown(acknowledgment_md, elem_id="ack_markdown")
+    with gr.Accordion(ref_acknowledgment_md,open=False):
+        gr.Markdown(acknowledgment_md, elem_id="ack_markdown")
 
     # Register listeners
     btn_list = [

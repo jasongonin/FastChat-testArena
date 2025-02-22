@@ -256,8 +256,8 @@ window.__gradio_mode__ = "app";
                 with gr.Tab("🔍 Arena Visualizer", id=5):
                     build_visualizer()
 
-            with gr.Tab("ℹ️ About Us", id=4):
-                build_about()
+            #with gr.Tab("ℹ️ About Us", id=4):
+            #    build_about()
 
         context_state = gr.State(context)
 

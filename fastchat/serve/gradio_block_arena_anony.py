@@ -31,6 +31,7 @@ from fastchat.serve.gradio_web_server import (
     enable_text,
     disable_text,
     acknowledgment_md,
+    ref_acknowledgment_md,
     get_ip,
     get_model_description_md,
 )
@@ -463,7 +464,8 @@ def build_side_by_side_ui_anony(models):
     model_selectors = [None] * num_sides
     chatbots = [None] * num_sides
 
-    gr.Markdown(notice_markdown, elem_id="notice_markdown")
+    #with gr.Accordion("Notice disclamer", open=False):
+    #    gr.Markdown(notice_markdown, elem_id="notice_markdown")
 
     with gr.Group(elem_id="share-region-anony"):
         with gr.Accordion(
@@ -548,7 +550,8 @@ def build_side_by_side_ui_anony(models):
             label="Max output tokens",
         )
 
-    gr.Markdown(acknowledgment_md, elem_id="ack_markdown")
+    with gr.Accordion(ref_acknowledgment_md, open=False):
+        gr.Markdown(acknowledgment_md, elem_id="ack_markdown")
 
     # Register listeners
     btn_list = [

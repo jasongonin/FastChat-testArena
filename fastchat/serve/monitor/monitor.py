@@ -1080,7 +1080,8 @@ def build_leaderboard_tab(
             }
             """
         gr.Markdown(citation_md, elem_id="leaderboard_markdown")
-        gr.Markdown(acknowledgment_md, elem_id="ack_markdown")
+        with gr.Accordion(ref_acknowledgment_md,open=False):
+            gr.Markdown(acknowledgment_md, elem_id="ack_markdown")
 
     return [md_1] + gr_plots
 
